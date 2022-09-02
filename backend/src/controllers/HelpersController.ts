@@ -1,6 +1,8 @@
 import { Request, Response } from "express"
 
 import User from '../models/User'
+import FoodTruck from "../models/FoodTruck"
+import Reviews from "../models/Reviews"
 
 export default {
 
@@ -8,7 +10,13 @@ export default {
 
         const { instagram } = req.query
 
+        const user = await User.findOne( { instagram: instagram } )
+        if (!user)
+            return res.status(204).end()
+
+        await FoodTruck.deleteMany( { suggested_by: user._id } )    
         await User.deleteMany( { instagram: instagram } )
+        await Reviews.deleteMany( { suggested_by: user._id } )
 
         return res.status(204).end()
 
