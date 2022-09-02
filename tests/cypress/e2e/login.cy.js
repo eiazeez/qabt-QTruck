@@ -8,11 +8,13 @@ describe('Página de Login', () => {
     
     it('Deve logar com sucesso', () => {
       const user = {
-        name: 'Isaac',
+        name: 'Az',
         instagram: 'azeez',
         password: 'pwd123'
       }
       
+      cy.apiCreateUser(user)
+
       loginPage.go ()
       loginPage.form (user)
       loginPage.submit ()

@@ -8,6 +8,10 @@ class Modal {
             .should('have.text', text)
     }
 
+    confirm () {
+        cy.get('button[class*="confirm"]').click()
+    }
+
 }
 
 export default new Modal ()
