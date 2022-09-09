@@ -64,4 +64,29 @@ describe('Avaliações', ()=> {
         
     })
 
+    it.only ('Realizar 2 comentários diferentes', function () {
+
+      const user = this.users.simple_validate.user
+      const foodtruck = this.users.simple_validate.foodtruck
+      const review = this.users.simple_validate.review
+      const review2 = this.users.simple_validate.review2
+
+
+      cy.apiCreateUser(user)
+      cy.apiLogin(user)
+      cy.apiCreateFoodTruck(foodtruck)
+
+      cy.uiLogin(user)
+
+      MapPage.goToFoodtruck(foodtruck.name)
+
+      FoodTruckPage.addReview(review)
+      FoodTruckPage.reviewConfirm(user, review)
+
+      FoodTruckPage.formShouldBeEmpty()
+      
+      
+      
+  })
+
 })

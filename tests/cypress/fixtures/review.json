@@ -19,6 +19,11 @@
             "review" : {
                 "comment": "O suco tava top",
                 "stars": 4
+            },
+
+            "review2" : {
+                "comment": "Não gostei",
+                "stars": 1
             }
 
  },

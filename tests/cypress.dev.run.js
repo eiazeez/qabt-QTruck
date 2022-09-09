@@ -5,6 +5,11 @@ const TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQ4NDNiNjIxLTBlNzIt
 
 cypress.run({
   // specs to run here
+  browser: 'chrome',
+  baseUrl: 'http://localhost:3000',
+  env: {
+    apiUrl: 'http://localhost:3333'
+  }
 })
 .then((results) => {
   const args = {
