@@ -1,0 +1,59 @@
+{
+    "simple_validate" : { 
+    
+        "user" : {
+                "name": "Madru Gada",
+                "instagram": "madruguinha",
+                "password": "pwd123"
+            },
+
+            "foodtruck" : {
+                "latitude": "-3.7035751789173963",
+                "longitude": "-38.56732232300903",
+                "name": "Tienda del Piero",
+                "details": "Teste",
+                "opening_hours": "Das 08h às 22h",
+                "open_on_weekends": false
+            },
+
+            "review" : {
+                "comment": "O suco tava top",
+                "stars": 4
+            }
+
+ },
+
+    "dual_validate" : {
+        "user" : {
+            "name": "Steve Spilberg",
+            "instagram": "stevinho",
+            "password": "pwd123"
+        },
+
+        "user2" : {
+            "name": "Tim Berling ",
+            "instagram": "Avicii",
+            "password": "pwd123"
+        },
+
+        "review" : {
+            "comment": "O taco estava divino, porém, caro.",
+            "stars": 3
+        }, 
+
+        "review2" : {
+            "comment": "Achei meio meme",
+            "stars": 1
+        }, 
+
+        "foodtruck" : {
+            "latitude": "-3.7035751789173963",
+            "longitude": "-38.56732232300903",
+            "name": "Tomorrowland",
+            "details": "A terra do amanhã",
+            "opening_hours": "Das 08h às 22h",
+            "open_on_weekends": false
+        }
+    }
+
+} 

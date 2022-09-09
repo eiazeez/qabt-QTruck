@@ -1,0 +1,26 @@
+{
+    "success" : {
+        "name": "Az",
+        "instagram": "azeez",
+        "password": "pwd123"
+    },
+
+    "badPassword" : {
+        "instagram": "azeez",
+        "password": "SenhaRuim"
+    },
+
+    "badUser" : {
+        "instagram": "UserRuim",
+        "password": "pwd123"
+    },
+
+    "required_insta": {
+        "password": "pwd123"
+    },
+
+    "required_pass": {
+        "instagram": "azeez"
+    }
+
+}

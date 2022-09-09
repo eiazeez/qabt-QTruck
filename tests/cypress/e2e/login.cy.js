@@ -2,17 +2,21 @@ import loginPage from '../support/pages/Login'
 import mapPage from '../support/pages/Map'
 
 
+
 describe('Página de Login', () => {
 
   context('Login válido', ()=> {
     
-    it('Deve logar com sucesso', () => {
-      const user = {
-        name: 'Az',
-        instagram: 'azeez',
-        password: 'pwd123'
-      }
+    beforeEach(()=> {
+      cy.fixture('login-users').then(function(users){
+        this.users = users
+      })
+    })
+
+    it('Deve logar com sucesso', function() {
       
+      const user = this.users.success
+
       cy.apiCreateUser(user)
 
       loginPage.go ()
@@ -24,13 +28,17 @@ describe('Página de Login', () => {
 
   })
 
-  context('Login inválido', ()=> {
-    
-    it('Não deve logar com senha inválida', () => {
-      const user = {
-        instagram: 'azeez',
-        password: 'SenhaRuim'
-      }
+  context('Login inválido', function() {
+   
+    beforeEach( function() {
+      cy.fixture('login-users').then(function(users){
+        this.users = users
+      })
+    }) 
+
+    it('Não deve logar com senha inválida', function () {
+
+      const user = this.users.badPassword
       
       loginPage.go ()
       loginPage.form (user)
@@ -40,11 +48,9 @@ describe('Página de Login', () => {
       
     })
   
-    it('Não deve logar com user inexistente', () => {
-      const user = {
-        instagram: 'UserRuim',
-        password: 'pwd123'
-      }
+    it('Não deve logar com user inexistente', function() {
+
+      const user = this.users.badUser
       
       loginPage.go ()
       loginPage.form (user)
@@ -58,7 +64,13 @@ describe('Página de Login', () => {
 
   context('Campos obrigatórios', ()=> {
 
-    it('Todos os campos devem ser obrigatórios para logar', () => {
+    beforeEach( function() {
+      cy.fixture('login-users').then(function(users){
+        this.users = users
+      })
+    }) 
+
+    it('Todos os campos devem ser obrigatórios para logar', function () {
    
       loginPage.go ()
       loginPage.submit ()
@@ -67,11 +79,9 @@ describe('Página de Login', () => {
   
     })
 
-    it('Instagram deve ser obrigatório', ()=> {
+    it('Instagram deve ser obrigatório', function () {
       
-      const user = {
-        password: 'pwd123'
-      }
+      const user = this.users.required_insta
 
       loginPage.go ()
       loginPage.form (user)
@@ -81,11 +91,9 @@ describe('Página de Login', () => {
 
     })
 
-    it('Senha deve ser obrigatório', ()=> {
-     
-      const user = {
-        instagram: 'azeez',
-      }
+    it('Senha deve ser obrigatório', function () {
+    
+      const user = this.users.required_pass
 
       loginPage.go ()
       loginPage.form (user)

@@ -12,22 +12,11 @@ class FoodTruckPage {
 
     reviewConfirm (user, review) {
 
-    cy.contains('.profile .details strong', user.name)
-        .should('be.visible')
-        .should('have.text', user.name)
-
-    cy.contains('.profile .details span', user.instagram)
-        .should('be.visible')
-        .should('have.text', user.instagram)
-
-    cy.contains('.comment p', review.comment)
-        .should('be.visible')
+    cy.contains('.review-box', user.instagram).as('reviewBox')
+        .find('.comment p')
         .should('have.text', review.comment)
 
-    cy.contains('.profile .details span', user.instagram)
-        .parent()
-        .parent()
-        .siblings('.stars')
+    cy.get('@reviewBox')
         .find('svg')
         .should('be.visible')    
         .should('have.length', review.stars)
