@@ -12,7 +12,7 @@ describe('Avaliações', ()=> {
         })
       })
 
-    it ('Deve enviar uma nova avaliação', function () {
+    it.only ('Deve enviar uma nova avaliação', function () {
 
         const user = this.users.simple_validate.user
         const foodtruck = this.users.simple_validate.foodtruck
@@ -29,6 +29,10 @@ describe('Avaliações', ()=> {
 
         FoodTruckPage.addReview(review)
         FoodTruckPage.reviewConfirm(user, review)
+
+        // Após validar que o comentário foi inserido com sucesso, o Cypress deve validar que
+        // o formulário estará vazio para um possível novo preenchimento
+        FoodTruckPage.formShouldBeEmpty()
         
     })
 
@@ -63,30 +67,5 @@ describe('Avaliações', ()=> {
         FoodTruckPage.reviewConfirm(user2, review2)
         
     })
-
-    it.only ('Realizar 2 comentários diferentes', function () {
-
-      const user = this.users.simple_validate.user
-      const foodtruck = this.users.simple_validate.foodtruck
-      const review = this.users.simple_validate.review
-      const review2 = this.users.simple_validate.review2
-
-
-      cy.apiCreateUser(user)
-      cy.apiLogin(user)
-      cy.apiCreateFoodTruck(foodtruck)
-
-      cy.uiLogin(user)
-
-      MapPage.goToFoodtruck(foodtruck.name)
-
-      FoodTruckPage.addReview(review)
-      FoodTruckPage.reviewConfirm(user, review)
-
-      FoodTruckPage.formShouldBeEmpty()
-      
-      
-      
-  })
 
 })
